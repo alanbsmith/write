@@ -84,6 +84,7 @@ h1 {
   outline: solid 2px var(--bg-color-secondary);
   transition: outline 300ms ease;
   padding: 0.5rem;
+  appearance: none;
 }
 
 .word-count-label {

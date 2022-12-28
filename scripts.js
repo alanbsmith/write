@@ -81,6 +81,7 @@ function handleMaxCountInputChange(event) {
     event.currentTarget.value = '';
   }
   setHelpCounterText();
+  setHelpDescriptionText();
 }
 
 function handleMinCountInputChange(event) {
