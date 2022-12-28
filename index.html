@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Write<span class="primary-accent-color">.</span></h1>
+      <div class="word-count-range">
+        <div class="word-count-field">
+          <label class="word-count-label" for="min-word-count-input">min</label>
+          <input type="text" id="min-word-count-input" class="word-count-input word-count-range__input" size="6" />
+        </div>
+        <div class="word-count-field">
+          <label class="word-count-label" for="max-word-count-input">max</label>
+          <input type="text" id="max-word-count-input" class="word-count-input word-count-range__input" size="6" />
+        </div>
+      </div>
+      <div class="word-count-field">
+        <label class="word-count-label" for="word-count-input">write it down</label>
+        <textarea id="word-count-input" class="word-count-input current-word-count__input" aria-describedby="word-count-help-text" rows="8"></textarea>
+        <p id="word-count-help-text" class="word-count__help-text">
+          <span id="word-count-help-description" class="word-count__help-description"></span>
+          <span id="word-count-help-counter" class="word-count__help-counter">0 / ∞</span>
+        </p>
+      </div>
+    </main>
+  </body>
+  <script src="scripts.js"></script>
+</html>
