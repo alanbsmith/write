@@ -5,17 +5,37 @@ const helpCounter = document.getElementById('word-count-help-counter');
 const maxCountInput = document.getElementById('max-word-count-input');
 const minCountInput = document.getElementById('min-word-count-input');
 
+const wordCountControl = document.getElementById('count-type-button-word');
+const charCountControl = document.getElementById('count-type-button-char');
+
 const defaultRowCount = 8;
 
-function resetRangeValues() {
+function resetFields() {
   maxCountInput.value = '';
   minCountInput.value = '';
+  setHelpCounterText();
+  setHelpDescriptionText();
+}
+
+function getCountType() {
+  const isWordCount = wordCountControl.getAttribute('aria-pressed') === "true";
+  if (isWordCount) {
+    return 'word';
+  } else {
+    return 'char';
+  }
 }
 
 function getWordCount(value = '') {
-  const wordRegExp = /\w+'*\w*/g;
-  const words = value.match(wordRegExp) || [];
-  return words.length;
+  const countType = getCountType();
+
+  if (countType === 'word') {
+    const wordRegExp = /\w+'*\w*/g;
+    const words = value.match(wordRegExp) || [];
+    return words.length;
+  } else {
+    return value.length;
+  }
 }
 
 function getMinWordCount() {
@@ -62,7 +82,7 @@ function setRowCount(event) {
 
 function handleTextareaChange(event) {
   setHelpCounterText();
-  setHelpDescriptionText()
+  setHelpDescriptionText();
   setRowCount(event);
 }
 
@@ -98,6 +118,26 @@ function handleRangeInputBackspace(event) {
   }
 }
 
+function handleCharCountTypeControl() {
+  const isPressed = charCountControl.getAttribute('aria-pressed');
+  if (isPressed === "false") {
+    wordCountControl.setAttribute('aria-pressed', false);
+    charCountControl.setAttribute('aria-pressed', true);
+    setHelpCounterText();
+    setHelpDescriptionText();
+  }
+}
+
+function handleWordCountTypeControl() {
+  const isPressed = wordCountControl.getAttribute('aria-pressed');
+  if (isPressed === "false") {
+    charCountControl.setAttribute('aria-pressed', false);
+    wordCountControl.setAttribute('aria-pressed', true);
+    setHelpCounterText();
+    setHelpDescriptionText();
+  }
+}
+
 maxCountInput.addEventListener('input', handleMaxCountInputChange);
 maxCountInput.addEventListener('keydown', handleRangeInputBackspace);
 
@@ -107,4 +147,7 @@ minCountInput.addEventListener('keydown', handleRangeInputBackspace);
 textarea.addEventListener('input', handleTextareaChange);
 textarea.addEventListener('keydown', handleTextareaBackspace);
 
-resetRangeValues();
+wordCountControl.addEventListener('click', handleWordCountTypeControl);
+charCountControl.addEventListener('click', handleCharCountTypeControl);
+
+resetFields();

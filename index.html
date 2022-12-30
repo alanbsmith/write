@@ -5,8 +5,10 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main>
+    <header>
       <h1>Write<span class="primary-accent-color">.</span></h1>
+    </header>
+    <main>
       <div class="word-count-range">
         <div class="word-count-field">
           <label class="word-count-label" for="min-word-count-input">min</label>
@@ -15,6 +17,10 @@
         <div class="word-count-field">
           <label class="word-count-label" for="max-word-count-input">max</label>
           <input type="text" id="max-word-count-input" class="word-count-input word-count-range__input" size="6" pattern="\d*" />
+        </div>
+        <div role="group" aria-label="set counter type" class="count-type-controls">
+          <button aria-pressed="true" class="count-type-control__button" id="count-type-button-word">word</button>
+          <button aria-pressed="false" class="count-type-control__button" id="count-type-button-char">char</button>
         </div>
       </div>
       <div class="word-count-field">
