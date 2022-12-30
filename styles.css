@@ -6,6 +6,7 @@
   --type-color-secondary: #999999;
   --accent-color-primary: deeppink;
   --accent-color-secondary: #1491FF;
+  --accent-color-secondary-hover: #47A9FF;
   /* type */
   --typeface-family-primary: Helvetica, sans-serif;
   --typeface-family-secondary: 'Courier New', Courier, monospace;
@@ -54,6 +55,37 @@ main {
   flex-direction: column;
   gap: 2rem;
   min-width: max-content;
+}
+
+footer {
+  color: var(--type-color-secondary);
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  gap: 0.5rem;
+  min-width: max-content;
+}
+
+a {
+  padding: 0.0625rem 0.125rem;
+  color: var(--accent-color-secondary);
+  border-radius: 0.25rem;
+  border: solid 2px var(--bg-color-primary);
+}
+
+a:visited {
+  color: var(--accent-color-secondary);
+}
+
+a:hover, a:active {
+  color: var(--accent-color-secondary-hover);
+}
+
+a:focus {
+  color: var(--accent-color-secondary-hover);
+  border: solid 2px var(--accent-color-secondary-hover);
+  text-decoration: none;
+  outline: none;
 }
 
 .primary-accent-color {
@@ -213,13 +245,13 @@ main {
 }
 
 .email-draft-submit:focus, .email-draft-submit:hover {
-  border: solid 2px #47A9FF;
-  color: #47A9FF;
+  border: solid 2px var(--accent-color-secondary-hover);
+  color: var(--accent-color-secondary-hover);
   outline: none;
 }
 
 @media (min-width: 48rem) {
-  header, main {
+  header, main, footer {
     margin: 0 auto;
     width: 48rem;
   }
