@@ -53,7 +53,7 @@ function getCurrentWordCount() {
 function setHelpCounterText() {
   const count = getCurrentWordCount();
   const maxCount = getMaxWordCount();
-  const formattedMaxCount = maxCount === Infinity ? '∞' : maxCount;
+  const formattedMaxCount = maxCount === Infinity ? '--' : maxCount;
   helpCounter.innerHTML = `${count} / ${formattedMaxCount}`;
 }
 
@@ -65,11 +65,11 @@ function setHelpDescriptionText() {
   if (!count) {
     helpDescription.innerHTML = '';
   } else if (count < minCount) {
-    helpDescription.innerHTML = `▽ ${minCount - count} below`;
+    helpDescription.innerHTML = `${minCount - count} below`;
   } else if (count >= minCount && count <= maxCount) {
-    helpDescription.innerHTML = `▷ in range`;
+    helpDescription.innerHTML = `in range`;
   } else if (count > maxCount) {
-    helpDescription.innerHTML = `△ ${count - maxCount} above`;
+    helpDescription.innerHTML = `${count - maxCount} above`;
   }
 }
 
