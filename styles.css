@@ -45,6 +45,7 @@ header {
 
 h1 {
   font-size: 4rem;
+  font-weight: 800;
   margin: 2rem 0 0;
 }
 
@@ -52,7 +53,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 48rem;
+  min-width: max-content;
 }
 
 .primary-accent-color {
@@ -71,8 +72,9 @@ main {
 .count-type-controls {
   align-items: center;
   border-radius: 0.25rem;
-  display: flex;
+  display: inline-grid;
   gap: 0.125rem;
+  grid-template-columns: repeat(2,1fr);
   height: 2.5rem;
   border: solid 2px var(--bg-color-secondary);
   padding: 0 0.125rem;
@@ -115,9 +117,9 @@ main {
 .word-count-range {
   display: flex;
   flex: 1;
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: flex-end;
+  flex-wrap: no-wrap;
 }
 
 .word-count-field {
@@ -133,16 +135,16 @@ main {
 }
 
 .word-count-input {
+  background-color: var(--bg-color-primary);
+  border-radius: 0.25rem;
+  border: solid 2px var(--bg-color-secondary);
+  color: var(--type-color-primary);
   font-family: var(--typeface-family-primary);
   font-size: 1.125rem;
   line-height: 1.625rem;
-  background-color: var(--bg-color-primary);
-  border-radius: 0.25rem;
-  color: var(--type-color-primary);
-  border: solid 2px var(--bg-color-secondary);
-  transition: border 300ms ease;
+  margin: 0;
   padding: 0.25rem;
-  appearance: none;
+  transition: border 300ms ease;
 }
 
 .word-count-label {
@@ -157,7 +159,7 @@ main {
 }
 
 .word-count-input::placeholder {
-  color: #999999;
+  color: #666666;
 }
 
 .word-count__input {
@@ -191,9 +193,37 @@ main {
   margin: 0;
 }
 
+.email-draft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.email-draft-submit {
+  background-color: var(--bg-color-primary);
+  border-radius: 0.25rem;
+  border: solid 2px var(--accent-color-secondary);
+  color: var(--accent-color-secondary);
+  font-family: var(--typeface-family-primary);
+  font-size: 1.125rem;
+  line-height: 1.625rem;
+  min-height: 2.5rem;
+  padding: 0.25rem 1.5rem;
+  transition: border 300ms ease, color 300ms ease;
+}
+
+.email-draft-submit:focus, .email-draft-submit:hover {
+  border: solid 2px #47A9FF;
+  color: #47A9FF;
+  outline: none;
+}
+
 @media (min-width: 48rem) {
   header, main {
     margin: 0 auto;
     width: 48rem;
+  }
+  .email-draft-submit {
+    align-self: flex-end;
   }
 }

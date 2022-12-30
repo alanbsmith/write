@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -13,15 +13,15 @@
       <div class="word-count-range">
         <div class="word-count-field">
           <label class="word-count-label" for="min-word-count-input">min</label>
-          <input type="text" id="min-word-count-input" class="word-count-input word-count-range__input" size="6" pattern="\d*" />
+          <input type="text" id="min-word-count-input" class="word-count-input word-count-range__input" size="4" pattern="\d*" />
         </div>
         <div class="word-count-field">
           <label class="word-count-label" for="max-word-count-input">max</label>
-          <input type="text" id="max-word-count-input" class="word-count-input word-count-range__input" size="6" pattern="\d*" />
+          <input type="text" id="max-word-count-input" class="word-count-input word-count-range__input" size="4" pattern="\d*" />
         </div>
         <div role="group" aria-label="set counter type" class="count-type-controls">
           <button aria-pressed="true" class="count-type-control__button" id="count-type-button-word">word</button>
-          <button aria-pressed="false" class="count-type-control__button" id="count-type-button-char">char</button>
+          <button aria-pressed="false" class="count-type-control__button" id="count-type-button-char">character</button>
         </div>
       </div>
       <div class="word-count-field">
@@ -32,6 +32,11 @@
           <span id="word-count-help-counter" class="word-count__help-counter">0 / --</span>
         </p>
       </div>
+      <form id="email-draft-form" class="email-draft" action="mailto:example@example.com?subject=Draft Notes" method="post">
+        <label for="email-draft-input" class="word-count-label">email a draft</label>
+        <input type="email" class="word-count-input" id="email-draft-input" placeholder="your.email@example.com" autocapitalize="off" autocomplete="email" />
+        <button class="email-draft-submit">send</button>
+      </form>
     </main>
   </body>
   <script src="scripts.js"></script>

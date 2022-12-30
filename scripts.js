@@ -8,6 +8,9 @@ const minCountInput = document.getElementById('min-word-count-input');
 const wordCountControl = document.getElementById('count-type-button-word');
 const charCountControl = document.getElementById('count-type-button-char');
 
+const draftEmailForm = document.getElementById('email-draft-form');
+const draftEmailInput = document.getElementById('email-draft-input');
+
 const defaultRowCount = 8;
 
 function resetFields() {
@@ -15,6 +18,7 @@ function resetFields() {
   minCountInput.value = '';
   setHelpCounterText();
   setHelpDescriptionText();
+  draftEmailInput.value = '';
 }
 
 function getCountType() {
@@ -65,11 +69,11 @@ function setHelpDescriptionText() {
   if (!count) {
     helpDescription.innerHTML = '';
   } else if (count < minCount) {
-    helpDescription.innerHTML = `${minCount - count} below`;
+    helpDescription.innerHTML = `${minCount - count} below minimum`;
   } else if (count >= minCount && count <= maxCount) {
     helpDescription.innerHTML = `in range`;
   } else if (count > maxCount) {
-    helpDescription.innerHTML = `${count - maxCount} above`;
+    helpDescription.innerHTML = `${count - maxCount} above maximum`;
   }
 }
 
@@ -80,10 +84,17 @@ function setRowCount(event) {
   }
 }
 
+function updateDraftMailData() {
+  const recipient = draftEmailInput.value;
+  const subject = 'Draft Notes';
+  draftEmailForm.setAttribute('action', `mailto:${recipient}?subject=${subject}&body=${textarea.value}`);
+}
+
 function handleTextareaChange(event) {
   setHelpCounterText();
   setHelpDescriptionText();
   setRowCount(event);
+  updateDraftMailData();
 }
 
 function handleTextareaBackspace(event) {
@@ -150,5 +161,7 @@ textarea.addEventListener('keydown', handleTextareaBackspace);
 
 wordCountControl.addEventListener('click', handleWordCountTypeControl);
 charCountControl.addEventListener('click', handleCharCountTypeControl);
+
+draftEmailInput.addEventListener('input', updateDraftMailData);
 
 resetFields();
