@@ -74,7 +74,7 @@ function setHelpDescriptionText() {
 }
 
 function setRowCount(event) {
-  if (event.currentTarget && event.currentTarget.scrollHeight > event.currentTarget.clientHeight) {
+  while (event.currentTarget && event.currentTarget.scrollHeight > event.currentTarget.clientHeight) {
     const rowCount = parseInt(textarea.getAttribute('rows'), 10) || 2;
     textarea.setAttribute('rows', rowCount + 1);
   }
@@ -145,6 +145,7 @@ minCountInput.addEventListener('input', handleMinCountInputChange);
 minCountInput.addEventListener('keydown', handleRangeInputBackspace);
 
 textarea.addEventListener('input', handleTextareaChange);
+textarea.addEventListener('paste', handleTextareaChange);
 textarea.addEventListener('keydown', handleTextareaBackspace);
 
 wordCountControl.addEventListener('click', handleWordCountTypeControl);
